@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<scene id="AirwayScene">
+    <title>Airway</title>
+    <content>Assess and maintain patient airway</content>
+</scene>
+<scene id="BreathingScene">
+    <title>Breathing</title>
+    <content>Assess and administer oxygen if required; aim for an oxygen saturation that is greater then 95% (or 88-92% for COPD patients)</content>
+</scene>
+</root>

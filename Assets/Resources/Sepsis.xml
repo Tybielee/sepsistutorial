@@ -44,7 +44,7 @@
     </scene>
     <scene id="CirculationAntibioticScene" step="9">
         <title>Antibiotics</title>
-        <content>Blood cultures (at least two sets) and other relevant cultures should be collected PRIOR to antibiotic administration. However in patients with severe sepsis or septic shock, if difficult to obtain cultures do not delay administration of antibiotic(s). Refer to local Antimicrobial Stweardship policies/procedures regarding antibiotic instructions.</content>
+        <content>Blood cultures (at least two sets) and other relevant cultures should be collected PRIOR to antibiotic administration. However in patients with severe sepsis or septic shock, if difficult to obtain cultures do not delay administration of antibiotic(s). Refer to local Antimicrobial Stewardship policies/procedures regarding antibiotic instructions.</content>
         <specialInstructions>Consult Infectious Diseases Physician or Clinical Microbiologist if required.</specialInstructions>
         <notes>For patients with Severe sepsis or septic shock. Use CEC Adult Antibiotic Guideline for Severe Sepsis and Septic Shock or locally endorsed antibiotic prescribing guideline. Prescribe and administer antibiotics within 60 minutes of sepsis recognition. For patients with Sepsis, use locally endorsed antibiotic prescribing guideline. Prescribe and administer antibiotics promptly in a timeframe directed by senior clinician (must be within 2 hours)</notes>
     </scene>

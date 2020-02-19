@@ -12,8 +12,33 @@ namespace Sepsis.Xml {
     /// </summary>
     public class XmlParser
     {
-        // Stores the path to the xml file containing the strings for the sepsis tutorial.
+        /// <summary>
+        /// Stores the path to the xml file containing the strings for the sepsis tutorial.
+        /// </summary>
         private string filePath = Application.absoluteURL+"Assets/Resources/sepsis.xml";
+
+        /// <summary>
+        /// stores the xml file as an XElement.
+        /// </summary>
+        private XElement scenes;
+
+        /// <summary>
+        /// Constructor for the XmlParser class.
+        /// </summary>
+        public XmlParser()
+        {
+            this.scenes = XElement.Load(this.filePath);
+        }
+
+        /// <summary>
+        /// Obtains the scene name that is after the current scene.
+        ///</summary>
+        /// <param name="currentSceneName">The current scene name.</param>
+        /// <returns>A string containing the name of the next scene.</returns>
+        public string GetNextSceneName(string currentSceneName)
+        {
+            return this.FindNextScene(currentSceneName);
+        }
 
         /// <summary>
         /// Gets the content text for the specified scene.
@@ -22,7 +47,7 @@ namespace Sepsis.Xml {
         /// <returns>A string containing the content for the scene.</returns>
         public string GetSceneContent(string sceneName)
         {
-            return (string)this.FindNode(sceneName, "content").FirstOrDefault();
+            return (string)this.FindNodeBySceneNameAndElement(sceneName, "content").FirstOrDefault();
         }
 
         /// <summary>
@@ -32,7 +57,7 @@ namespace Sepsis.Xml {
         /// <returns>A string containing the special instructions for the scene.</returns>
         public string GetSceneInstructions(string sceneName) 
         {
-            return (string)this.FindNode(sceneName, "specialInstructions").FirstOrDefault();
+            return (string)this.FindNodeBySceneNameAndElement(sceneName, "specialInstructions").FirstOrDefault();
         }
 
         /// <summary>
@@ -42,7 +67,7 @@ namespace Sepsis.Xml {
         /// <returns>A string containing the notes for the scene.</returns>
         public string GetSceneNotes(string sceneName) 
         {
-            return (string)this.FindNode(sceneName, "notes").FirstOrDefault();
+            return (string)this.FindNodeBySceneNameAndElement(sceneName, "notes").FirstOrDefault();
         }
 
         /// <summary>
@@ -52,7 +77,27 @@ namespace Sepsis.Xml {
         /// <returns>A string containing the title for the scene.</returns>
         public string GetSceneTitle(string sceneName) 
         {
-            return (string)this.FindNode(sceneName, "title").FirstOrDefault();
+            return (string)this.FindNodeBySceneNameAndElement(sceneName, "title").FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Obtains the scene name that is after the current scene.
+        ///</summary>
+        /// <param name="currentSceneName">The current scene name.</param>
+        /// <returns>A string containing the name of the next scene.</returns>
+        private string FindNextScene(string currentSceneName)
+        {
+            XElement currentScene = scenes.Descendants("scene").Where(scene => (string)scene.Attribute("id") == currentSceneName).FirstOrDefault();
+            
+            XNode nextNode = currentScene?.NextNode;
+            if (nextNode != null) 
+            {
+                return XElement.Parse(nextNode.ToString())?.Attribute("id")?.Value;
+            }
+            else 
+            {
+                return String.Empty;
+            }
         }
 
         /// <summary>
@@ -60,9 +105,8 @@ namespace Sepsis.Xml {
         /// </summary>
         /// <param name="sceneName">The scene name for which to obtain the XElement.</param>
         /// <returns>A IEnumerable of XElements</returns>
-        private IEnumerable<XElement> FindNode(string sceneName, string elementName)
+        private IEnumerable<XElement> FindNodeBySceneNameAndElement(string sceneName, string elementName)
         {
-            XElement scenes = XElement.Load(filePath);
             return scenes.Descendants("scene").Where(scene => (string)scene.Attribute("id") == sceneName)
                                             .Select(scene => scene.Element(elementName));
         }

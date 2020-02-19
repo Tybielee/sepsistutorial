@@ -11,26 +11,52 @@ using TMPro;
 /// </summary>
 public class TutorialManager : MonoBehaviour
 {
-    public TextMeshProUGUI title;
+    /// <summary>
+    /// Property to access to the Text Mesh Pro Guid text item for the content.
+    /// </summary>
     public TextMeshProUGUI content;
-    public TextMeshProUGUI specialInstructions;
+
+    /// <summary>
+    /// Property to access to the Text Mesh Pro Guid text item for the notes.
+    /// </summary>
     public TextMeshProUGUI notes;
+
+    /// <summary>
+    /// Property to access to the Text Mesh Pro Guid text item for the special instructions.
+    /// </summary>
+    public TextMeshProUGUI specialInstructions;
+
+    /// <summary>
+    /// Property to access to the Text Mesh Pro Guid text item for the title.
+    /// </summary>
+    public TextMeshProUGUI title;
+
+    /// <summary>
+    /// Private variable holding the name of the scene that is after the current scene.
+    /// </summary>
+    private string nextSceneName;
+
+    /// <summary>
+    /// Private variable that allows the current file to utilize xml parsing.
+    /// </summary>
+    private XmlParser parser;
+
+    /// <summary>
+    /// Variable that holds the current scene.
+    /// </summary>
+    private Scene scene;
 
     /// <summary>
     /// Start is called before the first frame update.
     /// </summary>
     void Start()
     {
+        this.parser = new XmlParser();
+        this.scene = SceneManager.GetActiveScene();
         this.InitalizeTextObjects();
         this.SetTextObjects();
-    }
-
-    /// <summary>
-    /// Update is called once per frame. 
-    /// </summary>
-    void Update()
-    {
-        Debug.Log("Update Function Being Called");
+        this.nextSceneName = this.parser.GetNextSceneName(this.scene.name);
+        StartCoroutine("NextSceneLogic");
     }
 
     /// <summary>
@@ -38,10 +64,42 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     private void InitalizeTextObjects()
     {
-        title.text = String.Empty;
-        content.text = String.Empty;
-        specialInstructions.text = String.Empty;
-        notes.text = String.Empty;
+        this.title.text = String.Empty;
+        this.content.text = String.Empty;
+        this.specialInstructions.text = String.Empty;
+        this.notes.text = String.Empty;
+    }
+
+    /// <summary>
+    /// A coroutine that will display the text on screen and send the user to the next scene.
+    /// </summary>
+    /// <returns>an Ienumerator for use in the coroutine stack.</returns>
+    private IEnumerator NextSceneLogic(){
+        
+        yield return new WaitForSeconds(4);
+
+        if (!this.content.enabled)
+        {
+            this.content.enabled = true;
+            yield return new WaitForSeconds(10);
+        }
+
+        if (!this.specialInstructions.enabled)
+        {
+            this.specialInstructions.enabled = true;
+            yield return new WaitForSeconds(5);
+        }
+
+        if (!this.notes.enabled)
+        {
+            this.notes.enabled = true;
+            yield return new WaitForSeconds(7);
+        }
+
+        if (!String.IsNullOrEmpty(this.nextSceneName))
+        {
+            SceneManager.LoadScene(this.nextSceneName);
+        }
     }
 
     /// <summary>
@@ -49,35 +107,31 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     private void SetTextObjects()
     {
-        XmlParser parser = new XmlParser();
-        Scene scene = SceneManager.GetActiveScene();
-        Debug.Log($"Active Scene is {scene.name} and build index is {scene.buildIndex}.");
-        string titleText = parser.GetSceneTitle(scene.name);
+        string titleText = this.parser.GetSceneTitle(scene.name);
         if (titleText != null)
         {
-            title.text = titleText;
-            print(titleText);
+            this.title.text = titleText;
         }
 
-        string contentText = parser.GetSceneContent(scene.name);
+        string contentText = this.parser.GetSceneContent(scene.name);
         if (contentText != null)
         {
-            content.text = contentText;
-            print(contentText);
+            this.content.text = contentText;
+            this.content.enabled = false;
         }
 
-        string specialInstructText = parser.GetSceneInstructions(scene.name);
+        string specialInstructText = this.parser.GetSceneInstructions(scene.name);
         if (specialInstructText != null)
         {
-            specialInstructions.text = specialInstructText;
-            print(specialInstructText);
+            this.specialInstructions.text = specialInstructText;
+            this.specialInstructions.enabled = false;
         }
         
-        string notesText = parser.GetSceneNotes(scene.name);
+        string notesText = this.parser.GetSceneNotes(scene.name);
         if (notesText != null)
         {
-            notes.text = notesText;
-            print(notesText);
+            this.notes.text = notesText;
+            this.notes.enabled = false;
         }
     }
 }

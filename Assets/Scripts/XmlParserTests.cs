@@ -49,7 +49,6 @@ public class XmlParserTests : MonoBehaviour
         return sceneTitle == expectedTitle;
     }
 
-
     /// <summary>
     /// Logs to the console the results of a test.
     /// </summary>

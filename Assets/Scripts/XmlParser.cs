@@ -26,6 +26,26 @@ namespace Sepsis.Xml {
         }
 
         /// <summary>
+        /// Gets the special instructions text for the specified scene.
+        /// </summary>
+        /// <param name="sceneName">The scene name for which to obtain the special instructions text.</param>
+        /// <returns>A string containing the special instructions for the scene.</returns>
+        public string GetSceneInstructions(string sceneName) 
+        {
+            return (string)this.FindNode(sceneName, "specialInstructions").FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Gets the notes text for the specified scene.
+        /// </summary>
+        /// <param name="sceneName">The scene name for which to obtain the notes text.</param>
+        /// <returns>A string containing the notes for the scene.</returns>
+        public string GetSceneNotes(string sceneName) 
+        {
+            return (string)this.FindNode(sceneName, "notes").FirstOrDefault();
+        }
+
+        /// <summary>
         /// Gets the title text for the specified scene.
         /// </summary>
         /// <param name="sceneName">The scene name for which to obtain the title text.</param>
@@ -36,10 +56,10 @@ namespace Sepsis.Xml {
         }
 
         /// <summary>
-        /// Gets the content text for the specified scene.
+        /// Gets the correct XElement based on the scene name and element name.
         /// </summary>
-        /// <param name="sceneName">The scene name for which to obtain the content text.</param>
-        /// <returns>A string containing the content for the scene.</returns>
+        /// <param name="sceneName">The scene name for which to obtain the XElement.</param>
+        /// <returns>A IEnumerable of XElements</returns>
         private IEnumerable<XElement> FindNode(string sceneName, string elementName)
         {
             XElement scenes = XElement.Load(filePath);

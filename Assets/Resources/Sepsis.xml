@@ -1,11 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-<scene id="AirwayScene">
-    <title>Airway</title>
-    <content>Assess and maintain patient airway</content>
-</scene>
-<scene id="BreathingScene">
-    <title>Breathing</title>
-    <content>Assess and administer oxygen if required; aim for an oxygen saturation that is greater then 95% (or 88-92% for COPD patients)</content>
-</scene>
+    <scene id="TitleScene" step="0">
+        <title>Sepsis VR Tutorial</title>
+    </scene>
+    <scene id="AirwayScene" step="1">
+        <title>Airway</title>
+        <content>Assess and maintain patient airway</content>
+    </scene>
+    <scene id="BreathingScene" step="2">
+        <title>Breathing</title>
+        <content>Assess and administer oxygen if required; aim for an oxygen saturation that is greater then 95% (or 88-92% for COPD patients)</content>
+    </scene>
+    <scene id="CirculationScene" step="3">
+        <title>Circulation</title>
+        <content>Consider intraosseous access after two failed attempts at cannulation.</content>
+    </scene>
+    <scene id="CirculationBloodScene" step="4">
+        <title>Collect blood cultures.</title>
+        <content>Take two (2) sets from two (2) separate sites.</content>
+        <specialInstructions>For patients with a central venous access device (CVAD), take one set from the CVAD plus one set peripherally.</specialInstructions>
+        <notes>Document Yes or Not obtained in file. </notes>
+    </scene>
+    <scene id="CirculationLactateScene" step="5">
+        <title>Collect Lactate.</title>
+        <content>Lactate greater than or equal to 2 mmol/L after adequate fluid resuscitation is significant.</content>
+        <notes>Document Yes or Not obtained in file. </notes>
+    </scene>
+    <scene id="CirculationOtherScene" step="6">
+        <title>Collect FBC, EUC, CRP/PCT, LFTs, coags and glucose.</title>
+        <content>BGL that is greater than 7.7 mmol/L in the absence of diabetes may be significant.</content>
+        <notes>Document Yes or Not obtained in file. </notes>
+    </scene>
+    <scene id="CirculationInvestigationScene" step="7">
+        <title>Order and collect other investigations and culture.</title>
+        <content>Prior to antibiotics (unless a SENIOR CLINICIAN assesses that this would result in an unacceptable delay in commencing antibiotic therapy). Some examples include urine, cerebrospinal fluid, wound swab, joint or organ space aspirate.</content>
+        <notes>Document all investigation and cultures collected in file.</notes>
+    </scene>
+    <scene id="CirculationFluidScene" step="8">
+        <title>Fluid Resuscitation (intravenous or intraosseous)</title>
+        <content>Use crystalloid. Aim for Systolic Blood Pressure greater than 100mmHg. Monitor for signs for pulmonary oedema and review at risk patients more frequently.</content>
+        <specialInstructions>Consider commencement of vasopressors.</specialInstructions>
+        <notes>For emergency department patients, give an initial 20 mL/kg bolus STAT, if no response repeat 20 mL/kg STAT. For inpatient, give an initial 250-500ml bolus STAT, if no response repeat 250-500mL STAT. If no response in SBP after 1000mL. call a Rapid Response.</notes>
+    </scene>
+    <scene id="CirculationAntibioticScene" step="9">
+        <title>Antibiotics</title>
+        <content>Blood cultures (at least two sets) and other relevant cultures should be collected PRIOR to antibiotic administration. However in patients with severe sepsis or septic shock, if difficult to obtain cultures do not delay administration of antibiotic(s). Refer to local Antimicrobial Stweardship policies/procedures regarding antibiotic instructions.</content>
+        <specialInstructions>Consult Infectious Diseases Physician or Clinical Microbiologist if required.</specialInstructions>
+        <notes>For patients with Severe sepsis or septic shock. Use CEC Adult Antibiotic Guideline for Severe Sepsis and Septic Shock or locally endorsed antibiotic prescribing guideline. Prescribe and administer antibiotics within 60 minutes of sepsis recognition. For patients with Sepsis, use locally endorsed antibiotic prescribing guideline. Prescribe and administer antibiotics promptly in a timeframe directed by senior clinician (must be within 2 hours)</notes>
+    </scene>
 </root>

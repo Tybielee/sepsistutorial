@@ -24,6 +24,19 @@ public class XmlParserTests : MonoBehaviour
     }
 
     /// <summary>
+    /// Verifies the content string obtained from the xml file is correct.
+    /// </summary>
+    /// <param name="sceneName">The scene name for which to obtain the title text.</param>
+    /// <param name="expectedContent">The expeected title for the scene.</param>
+    /// <returns>True if the content matches; false otherwise.</returns>
+    private bool VerifySceneContent(string sceneName, string expectedContent)
+    {
+        XmlParser parser = new XmlParser();
+        string sceneContent = parser.GetSceneContent(sceneName);
+        return sceneContent == expectedContent;
+    }
+
+    /// <summary>
     /// Verifies the title string obtained from the xml file is correct.
     /// </summary>
     /// <param name="sceneName">The scene name for which to obtain the title text.</param>
@@ -36,18 +49,6 @@ public class XmlParserTests : MonoBehaviour
         return sceneTitle == expectedTitle;
     }
 
-    /// <summary>
-    /// Verifies the content string obtained from the xml file is correct.
-    /// </summary>
-    /// <param name="sceneName">The scene name for which to obtain the title text.</param>
-    /// <param name="expectedContent">The expeected title for the scene.</param>
-    /// <returns>True if the content matches; false otherwise.</returns>
-    private bool VerifySceneContent(string sceneName, string expectedContent)
-    {
-        XmlParser parser = new XmlParser();
-        string sceneContent = parser.GetSceneContent(sceneName);
-        return sceneContent == expectedContent;
-    }
 
     /// <summary>
     /// Logs to the console the results of a test.

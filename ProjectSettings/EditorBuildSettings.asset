@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CirculationAntibioticScene.unity
     guid: 1fc95c836b878ae42854b8574f2ef959
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: 201951de3440aa14e8ed4671b02cd748
   m_configObjects: {}

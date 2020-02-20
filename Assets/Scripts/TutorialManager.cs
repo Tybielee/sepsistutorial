@@ -68,19 +68,19 @@ public class TutorialManager : MonoBehaviour
         if (!this.content.enabled)
         {
             this.content.enabled = true;
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(12);
         }
 
         if (!this.specialInstructions.enabled)
         {
             this.specialInstructions.enabled = true;
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(7);
         }
 
         if (!this.notes.enabled)
         {
             this.notes.enabled = true;
-            yield return new WaitForSeconds(7);
+            yield return new WaitForSeconds(12);
         }
 
         if (!String.IsNullOrEmpty(this.nextSceneName))

@@ -48,4 +48,8 @@
         <specialInstructions>Consult Infectious Diseases Physician or Clinical Microbiologist if required.</specialInstructions>
         <notes>For patients with Severe sepsis or septic shock. Use CEC Adult Antibiotic Guideline for Severe Sepsis and Septic Shock or locally endorsed antibiotic prescribing guideline. Prescribe and administer antibiotics within 60 minutes of sepsis recognition. For patients with Sepsis, use locally endorsed antibiotic prescribing guideline. Prescribe and administer antibiotics promptly in a timeframe directed by senior clinician (must be within 2 hours)</notes>
     </scene>
+    <scene id="EndScene" step="10">
+        <title>The End</title>
+        <content>Please press the escape key to exit the application.</content>
+    </scene>
 </root>

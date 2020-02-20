@@ -8,4 +8,31 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TitleScene.unity
     guid: e1d1f720909d0a24c83df150bec10a22
+  - enabled: 1
+    path: Assets/Scenes/AirwayScene.unity
+    guid: ae158cf3f2bb93549b7b18ef55d8adad
+  - enabled: 1
+    path: Assets/Scenes/BreathingScene.unity
+    guid: e37df4d4fa8b665418301f4be84d41dd
+  - enabled: 1
+    path: Assets/Scenes/CirculationScene.unity
+    guid: 5e8ab7610ec156144b7ec36000636f37
+  - enabled: 1
+    path: Assets/Scenes/CirculationBloodScene.unity
+    guid: 65230367282b27844922a665b15ceac6
+  - enabled: 1
+    path: Assets/Scenes/CirculationLactateScene.unity
+    guid: ea144123686e7ff47b25a94f003d5f42
+  - enabled: 1
+    path: Assets/Scenes/CirculationOtherScene.unity
+    guid: 9a7247a518f51674ba1f8b30cb68d16f
+  - enabled: 1
+    path: Assets/Scenes/CirculationInvestigationScene.unity
+    guid: db20ed62640e1b64c8e8746a65d81d85
+  - enabled: 1
+    path: Assets/Scenes/CirculationFluidScene.unity
+    guid: be48bc1b7e535c74bac70983e46ee8a5
+  - enabled: 1
+    path: Assets/Scenes/CirculationAntibioticScene.unity
+    guid: 1fc95c836b878ae42854b8574f2ef959
   m_configObjects: {}

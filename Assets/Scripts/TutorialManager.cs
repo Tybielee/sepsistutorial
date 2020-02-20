@@ -47,19 +47,6 @@ public class TutorialManager : MonoBehaviour
     private Scene scene;
 
     /// <summary>
-    /// Start is called before the first frame update.
-    /// </summary>
-    void Start()
-    {
-        this.parser = new XmlParser();
-        this.scene = SceneManager.GetActiveScene();
-        this.InitalizeTextObjects();
-        this.SetTextObjects();
-        this.nextSceneName = this.parser.GetNextSceneName(this.scene.name);
-        StartCoroutine("NextSceneLogic");
-    }
-
-    /// <summary>
     /// Initializes the text property of the Text Mesh Pro objects to String.Empty
     /// </summary>
     private void InitalizeTextObjects()
@@ -132,6 +119,31 @@ public class TutorialManager : MonoBehaviour
         {
             this.notes.text = notesText;
             this.notes.enabled = false;
+        }
+    }
+
+    /// <summary>
+    /// Start is called before the first frame update.
+    /// </summary>
+    void Start()
+    {
+        this.parser = new XmlParser();
+        this.scene = SceneManager.GetActiveScene();
+        this.InitalizeTextObjects();
+        this.SetTextObjects();
+        this.nextSceneName = this.parser.GetNextSceneName(this.scene.name);
+        StartCoroutine("NextSceneLogic");
+    }
+
+    /// <summary>
+    /// Updates is called once per frame.
+    /// Currently will close the applications if the escape key is pressed.
+    /// </summary>
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            Application.Quit();
         }
     }
 }

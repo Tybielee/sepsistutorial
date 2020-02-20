@@ -12,10 +12,12 @@ namespace Sepsis.Xml {
     /// </summary>
     public class XmlParser
     {
+
         /// <summary>
         /// Stores the path to the xml file containing the strings for the sepsis tutorial.
+        /// Currently commented out because we are loading the xml as a text asset instead.
         /// </summary>
-        private string filePath = Application.absoluteURL+"Assets/Resources/sepsis.xml";
+        // private string filePath = Application.absoluteURL+"Assets/Resources/sepsis.xml";
 
         /// <summary>
         /// stores the xml file as an XElement.
@@ -23,11 +25,15 @@ namespace Sepsis.Xml {
         private XElement scenes;
 
         /// <summary>
-        /// Constructor for the XmlParser class.
+        /// Constructor
         /// </summary>
         public XmlParser()
         {
-            this.scenes = XElement.Load(this.filePath);
+            // If you don't want to have to recompile the bulid everything you make an xml change.
+            // Note when you build you will need to copy the Path Assets/Resources/{file} into the create folder, as the resources were not copied over.
+            // this.scenes = XElement.Load(this.filePath);
+            TextAsset xmlAsset = Resources.Load("sepsis") as TextAsset;
+            this.scenes = XElement.Parse(xmlAsset?.text ?? "");
         }
 
         /// <summary>
